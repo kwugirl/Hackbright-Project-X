@@ -6,7 +6,11 @@ alphabet = list(string.lowercase)
 
 # makes a bunch of folders, each named for a letter in the alphabet
 for letter in alphabet:
-	os.mkdir(letter)
+	if os.path.exists(letter):
+		pass
+	else: 
+		os.mkdir(letter)
+	#os.mkdir(letter) # if you just have this without the if loop above, will get "File exists" error
 
 word_list = os.listdir("original_files/files/")
 
@@ -19,4 +23,4 @@ for i in range(len(word_list)):
 	shutil.copy("original_files/files/" + word_list[i], (word_list[i])[0])
 
 # deletes original text files, we're doing copy + delete since shutil.move requires that the directories don't already exist
-shutil.rmtree("original_files/files/")
+#shutil.rmtree("original_files/files/")
